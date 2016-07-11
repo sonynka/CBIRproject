@@ -15,7 +15,7 @@ import javax.media.jai.ROI;
 import javax.media.jai.RasterFactory;
 import javax.media.jai.TiledImage;
 
-public class ProjectMoments extends FeatureFactory
+public class EdgeHistogram extends FeatureFactory
 {
 	
 	int hQuant = 16;
@@ -25,7 +25,7 @@ public class ProjectMoments extends FeatureFactory
 	int dim = hQuant * sQuant * vQuant;
 	int[] colorVector = new int[dim];
 	
-	public ProjectMoments(Settings settings) {
+	public EdgeHistogram(Settings settings) {
 		super(settings);
 	}
 

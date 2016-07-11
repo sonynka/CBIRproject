@@ -9,6 +9,7 @@ public class Settings {
 	
 	private float saturation = 1;
 	private float weight = 0.5f;
+	private float regions = 4;
 
 	public float getSaturation() {
 		return saturation;
@@ -26,6 +27,19 @@ public class Settings {
 	public void setWeight(float weight){
 		this.weight = weight;
 		fireEvent(new SettingChangeEvent(SettingOption.WEIGHT, weight));
+		System.out.println("Histo weight: " + weight + " Moments weight: " + (1 - (float)weight));
+		
+	}
+	
+	public float getRegions() {
+		return regions;
+	}
+	
+	public void setRegions(float regions){
+		this.regions = regions;
+		fireEvent(new SettingChangeEvent(SettingOption.REGIONS, regions));
+		System.out.println("Regions: " + (int)regions);
+		
 	}
 	
 	
@@ -36,7 +50,7 @@ public class Settings {
 	 * Alle Einstellungen die über Kontrollelement geändert werden können
 	 * brauchen eine SettingOption. Diese Identifiziert das Event.
 	 */
-	public static enum SettingOption { SATURATION, WEIGHT };
+	public static enum SettingOption { SATURATION, WEIGHT, REGIONS };
 	
 	/**
 	 * SettingOption gibt an bei welchen Events die Listener informiert werden sollen.
@@ -94,8 +108,6 @@ public class Settings {
 			super();
 			this.setting = setting;
 			this.value = value;
-			
-			System.out.println("Histo weight: " + value + " Moments weight: " + (1 - (float)value));
 		}
 		public SettingOption getSetting() {
 			return setting;
